@@ -27,8 +27,8 @@ namespace PrimerProyecto
             int numero1 = consola.CapturarNumero("Ingrese un número por favor=");
             int numero2 = consola.CapturarNumero("Ingrese otro número por favor=");
 
-            consola.Escribir($"Mostramos la suma de {numero1} más {numero2}=");
-            consola.Escribir(calculadora.Sumar(numero1, numero2));
+            consola.Escribir($"Mostramos la resta de {numero1} y {numero2}=");
+            consola.Escribir(calculadora.Restar(numero1, numero2));
         }
 
         private static string CalculoDeBoletaDeLuz(int kw)
@@ -76,8 +76,11 @@ namespace PrimerProyecto
             return numero1 + numero2;
         }
         public int Restar(int numero1, int numero2)
-        { 
-            return numero1 - numero2;
+        {
+            if (numero1 > numero2)
+                return numero1 - numero2;
+            else
+                return numero2 - numero1;
         }
     }
     class Consola
