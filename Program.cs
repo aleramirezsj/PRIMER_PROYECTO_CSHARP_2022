@@ -16,19 +16,54 @@ namespace PrimerProyecto
             //int kilowats = 230;
             //Console.WriteLine(CalculoDeBoletaDeLuz(kilowats));
 
-            ProbandoNuestraCalculadora();
+            //ProbandoNuestraCalculadora();
+
+            for (int i = 0; i < 10; i++)
+            {
+                ProbamosElSwitchEscribiendoNotas();
+            }
+            
+        }
+
+        /// <summary>
+        /// Este método pide al usuario que ingrese una nota y muestra por consola la calificación correspondiente a esa nota
+        /// </summary>
+        private static void ProbamosElSwitchEscribiendoNotas()
+        {
+            int nota = Consola.CapturarNumero("Ingrese la nota:");
+            switch (nota)
+            {
+                case 10:
+                    Consola.Escribir("Excelente");
+                    break;
+                case >= 8:
+                    Consola.Escribir("Distinguido");
+                    break;
+                case >= 6:
+                    Consola.Escribir("Aprobado");
+                    break;
+                case >= 4:
+                    Consola.Escribir("No aprobado");
+                    break;
+                case >= 0:
+                    Consola.Escribir("Aplazado");
+                    break;
+                default:
+                    Consola.Escribir("Nota no válida");
+                    break;
+            }
         }
 
         private static void ProbandoNuestraCalculadora()
         {
             Calculadora calculadora = new Calculadora();
-            Consola consola = new Consola();
+            
+            
+            int numero1 = Consola.CapturarNumero("Ingrese un número por favor=");
+            int numero2 = Consola.CapturarNumero("Ingrese otro número por favor=");
 
-            int numero1 = consola.CapturarNumero("Ingrese un número por favor=");
-            int numero2 = consola.CapturarNumero("Ingrese otro número por favor=");
-
-            consola.Escribir($"Mostramos la resta de {numero1} y {numero2}=");
-            consola.Escribir(calculadora.Restar(numero1, numero2));
+            Consola.Escribir($"Mostramos la resta de {numero1} y {numero2}=");
+            Consola.Escribir(calculadora.Restar(numero1, numero2));
         }
 
         private static string CalculoDeBoletaDeLuz(int kw)
@@ -85,20 +120,21 @@ namespace PrimerProyecto
     }
     class Consola
     {
-        public void Escribir(string texto)
+        public static void Escribir(string texto)
         {
             Console.Write(texto);
         }
-        public void Escribir(int numero)
+        public static void Escribir(int numero)
         {
             Console.Write(numero);
         }
 
-        internal int CapturarNumero(string texto)
+        internal static int CapturarNumero(string texto)
         {
             Console.Write(texto);
             int numero = int.Parse(Console.ReadLine());
             return numero;
         }
     }
+    
 }
